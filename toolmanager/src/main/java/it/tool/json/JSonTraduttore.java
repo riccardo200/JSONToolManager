@@ -32,9 +32,9 @@ import it.tool.gui.Gui;
 public  class JSonTraduttore  {
 
 
-	static //public JSonTraduttore() {}
+	//static //public JSonTraduttore() {}
 
-	Tracciati tracciati;
+	static Tracciati tracciati;
 
 	public static Tracciati read(File file) {
 
