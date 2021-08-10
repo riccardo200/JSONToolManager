@@ -84,6 +84,7 @@ public  class JSonTraduttore  {
 		try {
 
 	     	JSONParser parser = new JSONParser();
+	     	
 			FileWriter writer = new FileWriter(file , true);
 
 			//Object object = (tracciati)obj;
@@ -113,19 +114,6 @@ public  class JSonTraduttore  {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 			//BufferedWriter buffered = new BufferedWriter(writer);
 			//FileReader reader = new FileReader(file);
@@ -163,7 +151,7 @@ public  class JSonTraduttore  {
 		}catch(Exception e) {
 
 			e.printStackTrace();
-			System.out.println("Problema scrittura file");
+			System.out.println("Problema scrittura FILE" + e);
 		}
 		//return JSonTraduttore.write(file) ;
 		//return write(file);
@@ -214,7 +202,6 @@ public  class JSonTraduttore  {
 		// return null;
 
 	}
-
 
 }
 
