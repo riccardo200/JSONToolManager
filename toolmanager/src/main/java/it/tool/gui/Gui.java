@@ -136,61 +136,6 @@ public class Gui extends JFrame {
 				edit.frame.setResizable(false);
 				edit.frame.setVisible(true);
 
-				//	File f = fileChooser.getSelectedFile();
-
-				//	this.tracciati = JSonTraduttore.write(f);
-
-				/*this.tracciati.setAbiMittente(text);
-        	this.tracciati.setAbiDestinatario(text);
-        	this.tracciati.setDataCaricamento(null);
-        	//this.tracciati.setDataValuta(null);
-        	this.tracciati.setContoReciproco(text);
-        	//this.tracciati.setSaldoIniziale(Double.parseDouble(text));
-        	//this.tracciati.setSaldoFinale(Double.parseDouble(text));
-
-        	System.out.println("PRESO");
-				 */
-				/*	try {
-
-    	          File f = fileChooser.getSelectedFile();
-    	          BufferedWriter write = new BufferedWriter(new FileWriter(f));
-
-    	          write.append(infoText.getText());        //+ "Edit: " + f.getName() + "\n");
-    	          //edit.testo.setCaret((Caret) edit.testo);
-    	          write.flush();
-    	          write.close();
-        		  System.out.println(f.getAbsoluteFile());
-
-        	}catch(Exception e) {}
-
-				 */
-
-				/*	try {
-
-					JSONParser parser = new JSONParser();
-					//File f = fileChooser.getSelectedFile();
-					FileWriter writer = new FileWriter(f , true);
-					//BufferedWriter buffered = new BufferedWriter(writer);
-					BufferedWriter buffered = new BufferedWriter(new FileWriter(f));
-					Object obj = parser.parse(writer.toString());
-					JSONObject obj1 = (JSONObject)obj;
-					JSONObject tracciatiobj = (JSONObject)obj1.get("TracciatoRapporto");
-					DateFormat DFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-					this.tracciati.setAbiMittente(text);
-		        	this.tracciati.setAbiDestinatario(text);
-		        	this.tracciati.setDataCaricamento(null);
-		        	//this.tracciati.setDataValuta(null);
-		        	this.tracciati.setContoReciproco(text);
-		        	//this.tracciati.setSaldoIniziale(Double.parseDouble(text));
-		        	//this.tracciati.setSaldoFinale(Double.parseDouble(text));
-
-
-				}catch(Exception e) {}
-
-				 */
-
-
 			}});
 
 		saveButton.addActionListener((ActionEvent action)->{

@@ -107,23 +107,11 @@ public class Edit implements ActionListener {
 					//JSonTraduttore.write(file, tracciati).setAbiMittente(testo.toString());
 					
 					System.out.println("entrato");
-
-					
-					
-					
-					
-
 				} catch (Exception e) {
 					
 					e.printStackTrace();
 				}
 				
-				//JSONObject tracciatiObject = new JSONObject();
-
-			     // this.tracciati.put("abiMittente", tracciati.setAbiMittente(testo.toString()));
-		
-			     // tracciatiObject.put("abiMittente", tracciati.setAbiMittente(testo.toString()));
-                 // tracciatiObject.put(file, tracciati);
 			}
 
 		});
