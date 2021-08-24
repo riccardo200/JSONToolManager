@@ -43,28 +43,34 @@ public  class JSonTraduttore  {
 		try {
 
 			JSONParser parser = new JSONParser();
+			
 			FileReader reader = new FileReader(file);
+			
 			Object obj = parser.parse(reader);
+			
 			JSONObject obj1 = (JSONObject)obj;
+			
 			JSONObject tracciatiobj = (JSONObject)obj1.get("TracciatoRapporto");
 
 			System.out.println(tracciatiobj);
 
 			DateFormat DFormat = new SimpleDateFormat("yyyy-MM-dd");
-
+			
+			//String cro = tracciatiobj.get("cro") == null ? tracciatiobj.get("cro").toString() : "";			
+			
 			Tracciati tracciati = new Tracciati( 
 
-					tracciatiobj.get("abiMittente").toString() ,
-					tracciatiobj.get("abiDestinatario").toString(),
-					DFormat.parse(tracciatiobj.get("dataCaricamento").toString()),
-					// DateFormat DFormat = new SimpleDateFormat("yy/ MM/ dd"),
-					//new Date(tracciatiobj.get("dataValuta").toString()),
-					tracciatiobj.get("idRapporto").toString(),
-					//tracciatiobj.get("note").toString(),
-					Double.parseDouble(tracciatiobj.get("saldoIniziale").toString()),
-					Double.parseDouble(tracciatiobj.get("saldoFinale").toString())
-
-					);
+				tracciatiobj.get("abiMittente").toString() ,
+				tracciatiobj.get("abiDestinatario").toString(),
+				DFormat.parse(tracciatiobj.get("dataCaricamento").toString()),
+				// DateFormat DFormat = new SimpleDateFormat("yy/ MM/ dd"),
+				//new Date(tracciatiobj.get("dataValuta").toString()),
+				tracciatiobj.get("idRapporto").toString(),
+				//tracciatiobj.get("note").toString(),
+				Double.parseDouble(tracciatiobj.get("saldoIniziale").toString()),
+				Double.parseDouble(tracciatiobj.get("saldoFinale").toString()),
+				tracciatiobj.get("divisa").toString()
+			);
 
 			return tracciati;
 
@@ -77,32 +83,45 @@ public  class JSonTraduttore  {
 
 
 	}
-	public static Tracciati write(File file , Tracciati tracciati) {
+	
+	public static Tracciati write( File file ,Tracciati tracciati) {
 
 		System.out.println("WRITE JSON");
-
+		
 		try {
 
 	     	JSONParser parser = new JSONParser();
 	     	
+	     	String filename = getFileName(tracciati);
+	     			
+	     	FileWriter fw1 = new FileWriter(filename);
+	     	
 			FileWriter writer = new FileWriter(file , true);
-
-			//Object object = (tracciati)obj;
-
-			//Object obj =  parser.parse(tracciati.toString());         //(Object)tracciati;
-
-			Object obj = (Object)tracciati;
 			
-			JSONObject tracciatiobj = (JSONObject)obj;
+			JSONObject tracciatiobj = new JSONObject();
 			
-			//JSONObject tracciatiobj = (JSONObject)((HashMap) obj).get("TracciatoRapporto");
+			// Create JSON object based on input values
+				
+			tracciatiobj.put( "abiMittente", tracciati.getAbiMittente() );
+				
+			tracciatiobj.put( "abiDestinatario", tracciati.getAbiDestinatario() );
+	
+			tracciatiobj.put( "divisa", tracciati.getDivisa() );
 			
-		    //obj = parser.parse(writer.toString());
+			//tracciatiobj.put( "dataCaricamento", tracciati.getDataCaricamento() );
+	
+			tracciatiobj.put( "idRapporto", tracciati.getIdRapporto() );
 			
-			obj = (JSONObject) parser.parse(new InputStreamReader(new FileInputStream(file)));
-
-			writer.append(tracciatiobj.toString());
-
+			tracciatiobj.put( "saldoIniziale", tracciati.getSaldoIniziale() );
+			
+			tracciatiobj.put( "saldoFinale", tracciati.getSaldoFinale() );
+			
+			tracciatiobj.put( "caricamenti", "" );
+			
+			
+			// Write on file object TracciatoRapporto JSON Formatted
+			
+			writer.append( "{\"TracciatoRapporto\":{" +  tracciatiobj.toString() + "}}" );
 
 			try {
 
@@ -115,20 +134,27 @@ public  class JSonTraduttore  {
 				e.printStackTrace();
 			}
 
-			return tracciati; 
-
 		}catch(Exception e) {
 
 			e.printStackTrace();
 			System.out.println("Problema scrittura FILE" + e);
 		}
-		//return JSonTraduttore.write(file) ;
-		//return write(file);
+
 		return tracciati;
 
 
 	}
 
+	private static String getFileName(Tracciati tracciati) {
+		
+		String filename = "Tracciati" + "_" + tracciati.getAbiMittente() + 
+			"_" + tracciati.getAbiDestinatario()  + ".json";
+		
+		// qui i sorting e l'algoritmo che decide il nome file
+		
+		return filename;
+	
+	}
 }
 
 

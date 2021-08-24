@@ -99,24 +99,27 @@ public class Gui extends JFrame {
 
 					if (choose == JFileChooser.APPROVE_OPTION) {
 
-						 this.file = fileChooser.getSelectedFile();
+						this.file = fileChooser.getSelectedFile();
 
 						this.tracciati = JSonTraduttore.read(this.file);
 
-
-						System.out.println(this.tracciati);
+						//System.out.println(this.tracciati);
 
 						BufferedReader read = new BufferedReader(new FileReader(this.file));
+						
 						String line = read.readLine();
 
 						while(line != null) {
+							
+							//read = new BufferedReader(read);
+							
+							//line = read.readLine();
 
 							infoText.append(line);
+							
 							line = read.readLine();
 						}
 						read.close();
-
-
 					}
 
 				}
@@ -147,6 +150,7 @@ public class Gui extends JFrame {
 				try {
 
 					fileChooser.setFileFilter(new TxtFileFilter());
+					
 					int choose = fileChooser.showSaveDialog(Gui.this);
 
 					if (choose == JFileChooser.APPROVE_OPTION) {

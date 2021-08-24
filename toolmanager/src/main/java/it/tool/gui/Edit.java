@@ -48,20 +48,20 @@ public class Edit implements ActionListener {
 
 	public Edit(File file , Tracciati tracciati) {
 
-		container.add(etichetta);    //abimittente
-		container.add(testo);
-		container.add(etichetta1);   //destinatario
-		container.add(testo1);
-		container.add(etichetta2);  //data caricamento
-		container.add(testo2);
-		container.add(etichetta6);   //data valuta
-		container.add(testo6);
-		container.add(etichetta3);    //conto reciproco
-		container.add(testo3);
-		container.add(etichetta4);    //saldo inizial
-		container.add(testo4);
-		container.add(etichetta5);    //saldo final
-		container.add(testo5);
+		container.add(etichetta);    
+		container.add(testo);         //abimittente
+		container.add(etichetta1);   
+		container.add(testo1);        //destinatario
+		container.add(etichetta2);  
+		container.add(testo2);        //data caricamento
+		container.add(etichetta6);   
+		container.add(testo6);        //data valuta
+		container.add(etichetta3);    
+		container.add(testo3);        //conto reciproco
+		container.add(etichetta4);    
+		container.add(testo4);        //saldo iniziale
+		container.add(etichetta5);   
+		container.add(testo5);        //saldo finale
 		container.add(b3); 
 
 		//testo.setText(tracciati.setAbiMittente(""););
@@ -70,7 +70,7 @@ public class Edit implements ActionListener {
 		//testo2.setText(tracciati.getDataCaricamento().toString());
 		testo2.setText("");
 		// testo6.setText(tracciati.getDataValuta().toString());
-		testo3.setText(tracciati.getContoReciproco());
+		testo3.setText(tracciati.getIdRapporto());
 		testo4.setText(String.valueOf(tracciati.getSaldoIniziale()));
 		testo5.setText(String.valueOf(tracciati.getSaldoFinale()));
 
@@ -78,35 +78,30 @@ public class Edit implements ActionListener {
 
 			if(action.getSource() == b3) {
 
-				//JSonTraduttore.write(file);
 				System.out.println("premuto");
-                
-				//testo.setText(null);
+			
 				try {
-					
-					JSonTraduttore.write(file, tracciati);
 					
 					file.setWritable(true);
 					
-					tracciati.setAbiMittente(testo.getName());
-				    tracciati.setAbiDestinatario(testo1.toString());
-					//tracciati.setDataCaricamento(testo2.toString());
-					//this.tracciati.setDataValuta(null);
-					tracciati.setContoReciproco(testo3.toString());
-					//tracciati.setSaldoIniziale(Double.parseDouble(text));
-					//tracciati.setSaldoFinale(Double.parseDouble(text));
-					//File f = fileChooser.getSelectedFile();
-					//this.tracciati = JSonTraduttore.write(null);
-                    
-					JSONObject tracciatiObject = new JSONObject();
+					tracciati.setAbiMittente(testo.getText().toString());
 					
-					//tracciatiObject.writeJSONString(tracciatiObject, JSonTraduttore.write(file, tracciati));
-					//JSonTraduttore.write(file, tracciati);
-					tracciatiObject.put("abiMittente", testo);
-					tracciatiObject.put("abiDestinatario", testo1);
-					//JSonTraduttore.write(file, tracciati).setAbiMittente(testo.toString());
+				    tracciati.setAbiDestinatario(testo1.getText().toString());
+				    
+					//tracciati.setDataCaricamento(testo2.getText().toString());
 					
-					System.out.println("entrato");
+					//this.tracciati.setDataValuta("");
+					
+					tracciati.setIdRapporto(testo3.getText().toString());
+					
+					tracciati.setSaldoIniziale(Double.parseDouble(testo4.getText().toString()));
+					
+					tracciati.setSaldoFinale(Double.parseDouble(testo5.getText().toString()));
+					
+					JSonTraduttore.write(file ,tracciati);
+					
+					System.out.println("tracciati:" + tracciati);
+					
 				} catch (Exception e) {
 					
 					e.printStackTrace();

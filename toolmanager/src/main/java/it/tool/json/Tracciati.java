@@ -3,8 +3,7 @@ package it.tool.json;
 import java.util.Date;
 
 public class Tracciati {
-	
-	//private String titolo;
+
 	private String abiMittente;
 	private String abiDestinatario;
 	private Date dataCaricamento;
@@ -13,14 +12,16 @@ public class Tracciati {
 	private String note;
 	private double saldoIniziale;
 	private double saldoFinale;
+	private String divisa;
 	
 	public Tracciati( String abiMittente , String abiDestinatario , Date dataCaricamento , 
-			  String idRapporto, double saldoIniziale , double saldoFinale) {
+			  String idRapporto, double saldoIniziale , double saldoFinale, String divisa) {
 		
 		//this.titolo = titolo;
 		this.abiMittente = abiMittente;
 		this.abiDestinatario = abiDestinatario;
 		this.dataCaricamento = dataCaricamento;
+		this.divisa = divisa;
 		//this.dataValuta = dataValuta;
 		this.idRapporto = idRapporto;
 		this.saldoIniziale = saldoIniziale;
@@ -61,13 +62,6 @@ public class Tracciati {
 		this.dataValuta = dataValuta;
 	}
 
-	public String getContoReciproco() {
-		return idRapporto;
-	}
-
-	public void setContoReciproco(String idRapporto) {
-		this.idRapporto = idRapporto;
-	}
 
 	public double getSaldoIniziale() {
 		return saldoIniziale;
@@ -100,5 +94,26 @@ public class Tracciati {
 		return "Tracciati [abiMittente=" + abiMittente + ", abiDestinatario=" + abiDestinatario + ", dataCaricamento="
 				+ dataCaricamento + ", dataValuta=" + dataValuta + ", contoReciproco=" + idRapporto + ", note="
 				+ note + ", saldoIniziale=" + saldoIniziale + ", saldoFinale=" + saldoFinale + "]";
-	}	
+	}
+
+
+	public String getIdRapporto() {
+		return idRapporto;
+	}
+
+
+	public void setIdRapporto(String idRapporto) {
+		this.idRapporto = idRapporto;
+	}
+
+
+	public String getDivisa() {
+		return divisa;
+	}
+
+
+	public void setDivisa(String divisa) {
+		this.divisa = divisa;
+	}
+
 }
