@@ -48,15 +48,10 @@ public class Gui extends JFrame {
 	JFileChooser fileChooser = new JFileChooser("C:\\Users\\user\\OneDrive\\Desktop\\Nuova cartella3");    //("~");  
 
 	public Gui(String text){
+		
 		super(text);
 
-		//Edit edit = new Edit();
-
-		//Open open = new Open();
-
 		JButton openButton = new JButton("Open");
-
-		// JButton openDirButton = new JButton("Open Directory");
 
 		JButton saveButton = new JButton("Save");
 
@@ -66,17 +61,11 @@ public class Gui extends JFrame {
 
 		openButton.addActionListener(new Open());
 
-		//   openDirButton.addActionListener(new Directory());
-
-		// editButton.addActionListener(Gui.this);
-
 		saveButton.addActionListener(new Save());
 
 		JPanel buttonPanel = new JPanel(new GridLayout(1, 4, 5, 5));
 
 		buttonPanel.add(openButton);
-
-		//      buttonPanel.add(openDirButton);
 
 		buttonPanel.add(editButton);
 
@@ -103,19 +92,18 @@ public class Gui extends JFrame {
 
 						this.tracciati = JSonTraduttore.read(this.file);
 
-						//System.out.println(this.tracciati);
-
 						BufferedReader read = new BufferedReader(new FileReader(this.file));
 						
 						String line = read.readLine();
 
 						while(line != null) {
 							
-							//read = new BufferedReader(read);
-							
+							//read = new BufferedReader(read);							
 							//line = read.readLine();
 
-							infoText.append(line);
+							infoText.append("Abi Mittente: " + tracciati.getAbiDestinatario() 
+									+ "\nAbi Destinatario: "+ tracciati.getAbiMittente()
+									+ "\nId Rapporto: " + tracciati.getIdRapporto() + "\n" + "\n");
 							
 							line = read.readLine();
 						}
@@ -146,7 +134,7 @@ public class Gui extends JFrame {
 			if (action.getSource() == saveButton){
 
 				fileChooser.setDialogTitle("Salva Tracciato/i");  	
-				// infoText.setText(infoText.getText() + "Saved: " + file.getName() + "\n");
+			
 				try {
 
 					fileChooser.setFileFilter(new TxtFileFilter());
@@ -157,10 +145,9 @@ public class Gui extends JFrame {
 
 						File f = fileChooser.getSelectedFile();
 
-						//Tracciati tracciati = JSonTraduttore.write(f);
 						BufferedWriter write = new BufferedWriter(new FileWriter(f));
-						//write.append(tracciati.);
-						write.append(infoText.getText());     //+ JSonTraduttore.write(f));       //+ "Saved: " + f.getName() + "\n");
+
+						write.append(infoText.getText());   //+ "Saved: " + f.getName() + "\n");
 						write.flush();
 						write.close();
 					}
@@ -170,13 +157,11 @@ public class Gui extends JFrame {
 
 		JPanel panel = new JPanel(new BorderLayout());
 
-		// JScrollPane scrollPane = new JScrollPane(panel);
-
 		panel.add(infoText, BorderLayout.CENTER);
 
 		panel.add(buttonPanel, BorderLayout.SOUTH );
 
-		this.getContentPane();   ///.add(scrollPane, BorderLayout.SOUTH);
+		this.getContentPane();   
 
 		this.setLocation(500, 250);
 
@@ -199,6 +184,7 @@ public class Gui extends JFrame {
 			String fname = file.getName().toLowerCase();
 
 			return fname.endsWith("json");
+			
 		}
 
 		@Override

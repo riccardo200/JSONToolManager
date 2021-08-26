@@ -67,9 +67,9 @@ public class Edit implements ActionListener {
 		//testo.setText(tracciati.setAbiMittente(""););
 		testo.setText(tracciati.getAbiMittente());
 		testo1.setText(tracciati.getAbiDestinatario());
-		//testo2.setText(tracciati.getDataCaricamento().toString());
-		testo2.setText("");
-		// testo6.setText(tracciati.getDataValuta().toString());
+		testo2.setText(tracciati.getDataCaricamento().toString());
+		//testo2.setText("");
+		//testo6.setText(tracciati.getDataContabile().toString());
 		testo3.setText(tracciati.getIdRapporto());
 		testo4.setText(String.valueOf(tracciati.getSaldoIniziale()));
 		testo5.setText(String.valueOf(tracciati.getSaldoFinale()));

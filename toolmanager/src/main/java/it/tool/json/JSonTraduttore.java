@@ -63,8 +63,7 @@ public  class JSonTraduttore  {
 				tracciatiobj.get("abiMittente").toString() ,
 				tracciatiobj.get("abiDestinatario").toString(),
 				DFormat.parse(tracciatiobj.get("dataCaricamento").toString()),
-				// DateFormat DFormat = new SimpleDateFormat("yy/ MM/ dd"),
-				//new Date(tracciatiobj.get("dataValuta").toString()),
+			   // DFormat.parse(tracciatiobj.get("dataContabile").toString()),
 				tracciatiobj.get("idRapporto").toString(),
 				//tracciatiobj.get("note").toString(),
 				Double.parseDouble(tracciatiobj.get("saldoIniziale").toString()),
@@ -100,15 +99,21 @@ public  class JSonTraduttore  {
 			
 			JSONObject tracciatiobj = new JSONObject();
 			
+			DateFormat DFormat = new SimpleDateFormat("yyyy-MM-dd");
+			
+			//tracciatiobj.merge(tracciatiobj, DFormat, null);
+			
 			// Create JSON object based on input values
-				
+			
 			tracciatiobj.put( "abiMittente", tracciati.getAbiMittente() );
 				
 			tracciatiobj.put( "abiDestinatario", tracciati.getAbiDestinatario() );
 	
 			tracciatiobj.put( "divisa", tracciati.getDivisa() );
 			
-			//tracciatiobj.put( "dataCaricamento", tracciati.getDataCaricamento() );
+			tracciatiobj.put( "dataCaricamento", tracciati.getDataCaricamento() );
+			
+			tracciatiobj.put("dataContabile", tracciati.getDataContabile());
 	
 			tracciatiobj.put( "idRapporto", tracciati.getIdRapporto() );
 			
@@ -116,13 +121,14 @@ public  class JSonTraduttore  {
 			
 			tracciatiobj.put( "saldoFinale", tracciati.getSaldoFinale() );
 			
-			tracciatiobj.put( "caricamenti", "" );
+			//tracciatiobj.put( "caricamenti", "" );
 			
 			
 			// Write on file object TracciatoRapporto JSON Formatted
 			
 			writer.append( "{\"TracciatoRapporto\":{" +  tracciatiobj.toString() + "}}" );
-
+			
+			//writer.append(tracciatiobj.toJSONString());
 			try {
 
 				writer.write(tracciatiobj.toJSONString());
@@ -147,10 +153,12 @@ public  class JSonTraduttore  {
 
 	private static String getFileName(Tracciati tracciati) {
 		
+		/*String filename = "Tracciati" + "_" + tracciati.getAbiMittente() +     //questo sarà il titolo completo
+			"_" + tracciati.getAbiDestinatario() + "_" + tracciati.getIdRapporto() 
+			+ tracciati.getDataContabile() + tracciati.getDataCaricamento() + ".json";
+		*/
 		String filename = "Tracciati" + "_" + tracciati.getAbiMittente() + 
-			"_" + tracciati.getAbiDestinatario()  + ".json";
-		
-		// qui i sorting e l'algoritmo che decide il nome file
+				"_" + tracciati.getAbiDestinatario() + "_" + tracciati.getIdRapporto() + ".json";
 		
 		return filename;
 	

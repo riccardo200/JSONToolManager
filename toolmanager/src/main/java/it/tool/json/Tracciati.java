@@ -7,7 +7,7 @@ public class Tracciati {
 	private String abiMittente;
 	private String abiDestinatario;
 	private Date dataCaricamento;
-	private Date dataValuta;
+	private Date dataContabile;
 	private String idRapporto;
 	private String note;
 	private double saldoIniziale;
@@ -17,12 +17,11 @@ public class Tracciati {
 	public Tracciati( String abiMittente , String abiDestinatario , Date dataCaricamento , 
 			  String idRapporto, double saldoIniziale , double saldoFinale, String divisa) {
 		
-		//this.titolo = titolo;
 		this.abiMittente = abiMittente;
 		this.abiDestinatario = abiDestinatario;
 		this.dataCaricamento = dataCaricamento;
 		this.divisa = divisa;
-		//this.dataValuta = dataValuta;
+		this.dataContabile = dataContabile;
 		this.idRapporto = idRapporto;
 		this.saldoIniziale = saldoIniziale;
 		this.saldoFinale = saldoFinale;
@@ -54,12 +53,12 @@ public class Tracciati {
 		this.dataCaricamento = dataCaricamento;
 	}
 
-	public Date getDataValuta() {
-		return dataValuta;
+	public Date getDataContabile() {
+		return dataContabile;
 	}
 
-	public void setDataValuta(Date dataValuta) {
-		this.dataValuta = dataValuta;
+	public void setDataContabile(Date dataContabile) {
+		this.dataContabile = dataContabile;
 	}
 
 
@@ -92,7 +91,7 @@ public class Tracciati {
 	@Override
 	public String toString() {
 		return "Tracciati [abiMittente=" + abiMittente + ", abiDestinatario=" + abiDestinatario + ", dataCaricamento="
-				+ dataCaricamento + ", dataValuta=" + dataValuta + ", contoReciproco=" + idRapporto + ", note="
+				+ dataCaricamento + ", dataContabile=" + dataContabile + ", contoReciproco=" + idRapporto + ", note="
 				+ note + ", saldoIniziale=" + saldoIniziale + ", saldoFinale=" + saldoFinale + "]";
 	}
 
