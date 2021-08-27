@@ -145,11 +145,12 @@ public class Gui extends JFrame {
 
 						File f = fileChooser.getSelectedFile();
 
-						BufferedWriter write = new BufferedWriter(new FileWriter(f));
+						//BufferedWriter write = new BufferedWriter(new FileWriter(f));
 
-						write.append(infoText.getText());   //+ "Saved: " + f.getName() + "\n");
-						write.flush();
-						write.close();
+						JSonTraduttore.write(file ,f ,tracciati);
+						//write.append(infoText.getText());   //+ "Saved: " + f.getName() + "\n");
+						//write.flush();
+						//write.close();
 					}
 				} catch (Exception ex) {}
 

@@ -2,6 +2,8 @@ package it.tool.json;
 
 import java.util.Date;
 
+import org.json.simple.JSONObject;
+
 public class Tracciati {
 
 	private String abiMittente;
@@ -13,9 +15,10 @@ public class Tracciati {
 	private double saldoIniziale;
 	private double saldoFinale;
 	private String divisa;
+	public String cro;
 	
 	public Tracciati( String abiMittente , String abiDestinatario , Date dataCaricamento , 
-			  String idRapporto, double saldoIniziale , double saldoFinale, String divisa) {
+			          String idRapporto, double saldoIniziale , double saldoFinale, String divisa) {
 		
 		this.abiMittente = abiMittente;
 		this.abiDestinatario = abiDestinatario;
@@ -25,10 +28,10 @@ public class Tracciati {
 		this.idRapporto = idRapporto;
 		this.saldoIniziale = saldoIniziale;
 		this.saldoFinale = saldoFinale;
-		//this.note = note;
+		this.note = note;
 	}
 	
-
+	
 	public String getAbiMittente() {
 		return this.abiMittente;
 	}
@@ -61,7 +64,6 @@ public class Tracciati {
 		this.dataContabile = dataContabile;
 	}
 
-
 	public double getSaldoIniziale() {
 		return saldoIniziale;
 	}
@@ -87,32 +89,28 @@ public class Tracciati {
 		
 		this.note = note;
 	}
-
-	@Override
-	public String toString() {
-		return "Tracciati [abiMittente=" + abiMittente + ", abiDestinatario=" + abiDestinatario + ", dataCaricamento="
-				+ dataCaricamento + ", dataContabile=" + dataContabile + ", contoReciproco=" + idRapporto + ", note="
-				+ note + ", saldoIniziale=" + saldoIniziale + ", saldoFinale=" + saldoFinale + "]";
-	}
-
-
+	
 	public String getIdRapporto() {
 		return idRapporto;
 	}
-
 
 	public void setIdRapporto(String idRapporto) {
 		this.idRapporto = idRapporto;
 	}
 
-
 	public String getDivisa() {
 		return divisa;
 	}
 
-
 	public void setDivisa(String divisa) {
 		this.divisa = divisa;
+	}
+
+	@Override
+	public String toString() {
+		return "Tracciati [abiMittente=" + abiMittente + ", abiDestinatario=" + abiDestinatario + ", dataCaricamento="
+				+ dataCaricamento + ", dataContabile=" + dataContabile + ", idRapporto=" + idRapporto + ", note="
+				+ note + ", saldoIniziale=" + saldoIniziale + ", saldoFinale=" + saldoFinale + "]";
 	}
 
 }

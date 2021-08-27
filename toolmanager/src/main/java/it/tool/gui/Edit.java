@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -63,11 +65,12 @@ public class Edit implements ActionListener {
 		container.add(etichetta5);   
 		container.add(testo5);        //saldo finale
 		container.add(b3); 
-
+ 
+		DateFormat DFormat = new SimpleDateFormat("yyyy-MM-dd");
 		//testo.setText(tracciati.setAbiMittente(""););
 		testo.setText(tracciati.getAbiMittente());
 		testo1.setText(tracciati.getAbiDestinatario());
-		testo2.setText(tracciati.getDataCaricamento().toString());
+		testo2.setText(DFormat.format(tracciati.getDataCaricamento()));
 		//testo2.setText("");
 		//testo6.setText(tracciati.getDataContabile().toString());
 		testo3.setText(tracciati.getIdRapporto());
@@ -97,8 +100,8 @@ public class Edit implements ActionListener {
 					tracciati.setSaldoIniziale(Double.parseDouble(testo4.getText().toString()));
 					
 					tracciati.setSaldoFinale(Double.parseDouble(testo5.getText().toString()));
-					
-					JSonTraduttore.write(file ,tracciati);
+				
+					//JSonTraduttore.write(file ,tracciati);
 					
 					System.out.println("tracciati:" + tracciati);
 					
