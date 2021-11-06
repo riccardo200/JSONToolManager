@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import it.tool.json.InitTracciato;
+import it.tool.json.JSonTraduttore;
 
 
 public class Create implements ActionListener {
@@ -42,7 +43,7 @@ public class Create implements ActionListener {
 	JButton b = new JButton("GENERA-JSON");
 	
 	
-	public Create (File file) {
+	public Create (File file , InitTracciato tracciato) {
 		
 		container.add(etMittente);
 		container.add(mittente);
@@ -67,6 +68,8 @@ public class Create implements ActionListener {
 			if(action.getSource()== b) {
 				
 				System.out.println("premuto");
+				
+				JSonTraduttore.generate(tracciato);
 				
 				try {
 					

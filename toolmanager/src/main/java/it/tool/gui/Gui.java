@@ -28,6 +28,7 @@ import javax.swing.text.Caret;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import it.tool.json.InitTracciato;
 import it.tool.json.JSonTraduttore;
 import it.tool.json.Tracciati;
 
@@ -42,6 +43,8 @@ public class Gui extends JFrame {
 	File[] currentFiles = null;
 
 	Tracciati tracciati;
+	
+	InitTracciato initTracciato;
 
 	File file;
 
@@ -133,7 +136,7 @@ public class Gui extends JFrame {
 			
 			if (action.getSource() == createButton) {
 				
-				Create create = new Create(file);
+				Create create = new Create(file, initTracciato);
 				
 				create.container.setLayout(new FlowLayout());
 				create.frame.setBounds(200, 270, 240, 295);

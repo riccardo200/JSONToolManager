@@ -17,6 +17,7 @@ import java.util.Iterator;
 
 import javax.swing.JFileChooser;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -37,7 +38,7 @@ public  class JSonTraduttore  {
 	
 	static InitTracciato initTracciato;
 
-	public static Tracciati read(File file) {
+	public static Tracciati read(File file) {                                 //LEGGI
 
 		System.out.println("READ JSON");
 
@@ -71,7 +72,7 @@ public  class JSonTraduttore  {
 		return null;
 	}
 	
-	public static Tracciati write( File input , File output ,Tracciati tracciati) {
+	public static Tracciati write( File input , File output ,Tracciati tracciati) {               //SCRIVI
 
 		System.out.println("WRITE JSON");
 		
@@ -140,10 +141,30 @@ public  class JSonTraduttore  {
 
 	}
 	
-	public static InitTracciato genera(InitTracciato initTracciato) {
+	public static InitTracciato generate(InitTracciato initTracciato) {                  //CREA
 		
 		System.out.println("CREATE JSON");
 		
+		JSONObject TracciatoRapporto = new JSONObject();
+		
+		System.out.println("TracciatoRapporto =" + TracciatoRapporto.toString());
+		
+		DateFormat DFormat = new SimpleDateFormat("yyyy-MM-dd");
+		
+		TracciatoRapporto.put("abiMittente", initTracciato.getAbiMittente());
+		TracciatoRapporto.put("abiDestinatario", initTracciato.getAbiDestinatario());
+		TracciatoRapporto.put("divisa", "EUR");
+		TracciatoRapporto.put("dataCaricamento", DFormat.format(initTracciato.getDataCaricamento()));
+		TracciatoRapporto.put("idRapporto", initTracciato.getIdRapporto());
+		TracciatoRapporto.put("saldoIniziale", initTracciato.getSaldoIniziale());
+		TracciatoRapporto.put("saldoFinale", initTracciato.getSaldoFinale());
+		
+		JSONArray movimenti = new JSONArray();
+		
+		movimenti.add("dataValuta");
+		movimenti.add("importo");
+		
+		TracciatoRapporto.put("movimenti", movimenti);
 		
 		return initTracciato;
 	}
@@ -161,7 +182,7 @@ public  class JSonTraduttore  {
 	
 	}
 	
-	private static JSONObject getTracciatiObj(File file) throws IOException, ParseException {
+	private static JSONObject getTracciatiObj(File file) throws IOException, ParseException {   //commento
 		
 		
 		JSONParser parser = new JSONParser();
