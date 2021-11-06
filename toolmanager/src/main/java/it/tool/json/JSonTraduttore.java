@@ -34,6 +34,8 @@ import it.tool.gui.Gui;
 public  class JSonTraduttore  {
 
 	static Tracciati tracciati;
+	
+	static InitTracciato initTracciato;
 
 	public static Tracciati read(File file) {
 
@@ -136,6 +138,14 @@ public  class JSonTraduttore  {
 
 		return tracciati;
 
+	}
+	
+	public static InitTracciato genera(InitTracciato initTracciato) {
+		
+		System.out.println("CREATE JSON");
+		
+		
+		return initTracciato;
 	}
 
 	private static String getFileName(Tracciati tracciati) {
