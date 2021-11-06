@@ -28,7 +28,7 @@ public class Tracciati {
 		this.idRapporto = idRapporto;
 		this.saldoIniziale = saldoIniziale;
 		this.saldoFinale = saldoFinale;
-		this.note = note;
+		//this.note = note;
 	}
 	
 	
@@ -80,7 +80,7 @@ public class Tracciati {
 		this.saldoFinale = saldoFinale;
 	}
 	
-	public String getNote() {
+	/*public String getNote() {
 		
 		return note;
 	}
@@ -88,7 +88,7 @@ public class Tracciati {
 	public void setNote(String note) {
 		
 		this.note = note;
-	}
+	}*/
 	
 	public String getIdRapporto() {
 		return idRapporto;

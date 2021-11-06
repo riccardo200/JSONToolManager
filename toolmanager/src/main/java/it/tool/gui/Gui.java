@@ -50,6 +50,8 @@ public class Gui extends JFrame {
 	public Gui(String text){
 		
 		super(text);
+		
+		JButton createButton = new JButton("Create");
 
 		JButton openButton = new JButton("Open");
 
@@ -64,13 +66,14 @@ public class Gui extends JFrame {
 		saveButton.addActionListener(new Save());
 
 		JPanel buttonPanel = new JPanel(new GridLayout(1, 4, 5, 5));
+		
+		buttonPanel.add(createButton);
 
 		buttonPanel.add(openButton);
 
 		buttonPanel.add(editButton);
 
 		buttonPanel.add(saveButton);
-
 
 		openButton.addActionListener((ActionEvent action)->{
 
@@ -98,9 +101,6 @@ public class Gui extends JFrame {
 
 						while(line != null) {
 							
-							//read = new BufferedReader(read);							
-							//line = read.readLine();
-
 							infoText.append("Abi Mittente: " + tracciati.getAbiDestinatario() 
 									+ "\nAbi Destinatario: "+ tracciati.getAbiMittente()
 									+ "\nId Rapporto: " + tracciati.getIdRapporto() + "\n" + "\n");
@@ -128,6 +128,21 @@ public class Gui extends JFrame {
 				edit.frame.setVisible(true);
 
 			}});
+		
+		createButton.addActionListener((ActionEvent action)->{
+			
+			if (action.getSource() == createButton) {
+				
+				Create create = new Create(file);
+				
+				create.container.setLayout(new FlowLayout());
+				create.frame.setBounds(200, 270, 240, 295);
+				create.frame.setLocation(690,325);
+				create.frame.setResizable(false);
+				create.frame.setVisible(true);
+				create.frame.setBackground(getForeground().darker());
+			}});
+
 
 		saveButton.addActionListener((ActionEvent action)->{
 
@@ -148,14 +163,11 @@ public class Gui extends JFrame {
 						//BufferedWriter write = new BufferedWriter(new FileWriter(f));
 
 						JSonTraduttore.write(file ,f ,tracciati);
-						//write.append(infoText.getText());   //+ "Saved: " + f.getName() + "\n");
-						//write.flush();
-						//write.close();
 					}
 				} catch (Exception ex) {}
 
 			}});
-
+		
 		JPanel panel = new JPanel(new BorderLayout());
 
 		panel.add(infoText, BorderLayout.CENTER);
@@ -166,7 +178,7 @@ public class Gui extends JFrame {
 
 		this.setLocation(500, 250);
 
-		this.setContentPane(panel);
+		this.setContentPane(panel);       //comment 
 
 		this.setSize(600, 400);
 

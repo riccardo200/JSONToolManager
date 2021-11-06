@@ -23,8 +23,6 @@ import it.tool.json.Tracciati;
 
 public class Edit implements ActionListener {
 
-	//File f = fileChooser.getSelectedFile();
-
 	Tracciati tracciati;
 
 	File file;
@@ -67,12 +65,10 @@ public class Edit implements ActionListener {
 		container.add(b3); 
  
 		DateFormat DFormat = new SimpleDateFormat("yyyy-MM-dd");
-		//testo.setText(tracciati.setAbiMittente(""););
 		testo.setText(tracciati.getAbiMittente());
 		testo1.setText(tracciati.getAbiDestinatario());
 		testo2.setText(DFormat.format(tracciati.getDataCaricamento()));
-		//testo2.setText("");
-		//testo6.setText(tracciati.getDataContabile().toString());
+		//testo6.setText(DFormat.format(tracciati.getDataCaricamento()));
 		testo3.setText(tracciati.getIdRapporto());
 		testo4.setText(String.valueOf(tracciati.getSaldoIniziale()));
 		testo5.setText(String.valueOf(tracciati.getSaldoFinale()));
@@ -93,15 +89,11 @@ public class Edit implements ActionListener {
 				    
 					//tracciati.setDataCaricamento(testo2.getText().toString());
 					
-					//this.tracciati.setDataValuta("");
-					
 					tracciati.setIdRapporto(testo3.getText().toString());
 					
 					tracciati.setSaldoIniziale(Double.parseDouble(testo4.getText().toString()));
 					
 					tracciati.setSaldoFinale(Double.parseDouble(testo5.getText().toString()));
-				
-					//JSonTraduttore.write(file ,tracciati);
 					
 					System.out.println("tracciati:" + tracciati);
 					
@@ -110,10 +102,7 @@ public class Edit implements ActionListener {
 					e.printStackTrace();
 				}
 				
-			}
-
-		});
-
+			}});
 	}
 
 	@Override

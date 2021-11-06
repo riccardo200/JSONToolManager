@@ -33,9 +33,6 @@ import it.tool.gui.Gui;
 
 public  class JSonTraduttore  {
 
-
-	//static //public JSonTraduttore() {}
-
 	static Tracciati tracciati;
 
 	public static Tracciati read(File file) {
@@ -43,26 +40,20 @@ public  class JSonTraduttore  {
 		System.out.println("READ JSON");
 
 		try {
-
-			//JSONObject tracciatiobject
-			
 			
 			JSONObject tracciatiobj = getTracciatiObj(file);
 
 			System.out.println(tracciatiobj);
 
 			DateFormat DFormat = new SimpleDateFormat("yyyy-MM-dd");
-			//DateFormatter DFormat = DateTimeFormatter.ofPattern("dd MM yyyy");
-						
 			
 			Tracciati tracciati = new Tracciati( 
 
 				tracciatiobj.get("abiMittente").toString() ,
 				tracciatiobj.get("abiDestinatario").toString(),
 				DFormat.parse(tracciatiobj.get("dataCaricamento").toString()),
-			  //  DFormat.parse(tracciatiobj.get("dataContabile").toString()),
+		      //  DFormat.parse(tracciatiobj.get("dataContabile").toString()),
 				tracciatiobj.get("idRapporto").toString(),
-				//tracciatiobj.get("note").toString(),
 				Double.parseDouble(tracciatiobj.get("saldoIniziale").toString()),
 				Double.parseDouble(tracciatiobj.get("saldoFinale").toString()),
 				tracciatiobj.get("divisa").toString()
@@ -76,8 +67,6 @@ public  class JSonTraduttore  {
 			System.out.println("Problema lettura file");
 		}
 		return null;
-
-
 	}
 	
 	public static Tracciati write( File input , File output ,Tracciati tracciati) {
@@ -86,7 +75,6 @@ public  class JSonTraduttore  {
 		
 		try {
 			
-
 	     	JSONParser parser = new JSONParser();
 	     	
 			FileReader reader = new FileReader(input);
@@ -101,15 +89,9 @@ public  class JSonTraduttore  {
 	     	
 			FileWriter writer = new FileWriter(output);
 			
-			//Object obj = parser.parse(reader);
-			
 			JSONObject tracciatiobj = (JSONObject)obj1.get("TracciatoRapporto");
 			
-			//JSONObject tracciatiobj = new JSONObject();
-			
 			DateFormat DFormat = new SimpleDateFormat("yyyy-MM-dd");
-			
-			//tracciatiobj.merge(tracciatiobj, DFormat, null);
 			
 			// Create JSON object based on input values
 			
@@ -121,7 +103,7 @@ public  class JSonTraduttore  {
 			
 			tracciatiobj.put( "dataCaricamento", DFormat.format(tracciati.getDataCaricamento()));
 			
-			tracciatiobj.put("dataContabile", tracciati.getDataContabile());
+			//tracciatiobj.put("dataContabile", DFormat.format(tracciati.getDataContabile()));
 	
 			tracciatiobj.put( "idRapporto", tracciati.getIdRapporto() );
 			
@@ -131,14 +113,10 @@ public  class JSonTraduttore  {
 			
 			obj1.put("TracciatoRapporto", tracciatiobj);
 			
-			//tracciatiobj.put( "caricamenti", "" );
-			
-			
 			// Write on file object TracciatoRapporto JSON Formatted
 			
 			//writer.append( "{\"TracciatoRapporto\":{" +  tracciatiobj.toString() + "}}" );
-			
-			//writer.append(tracciatiobj.toJSONString());
+
 			try {
 
 				writer.write(obj1.toJSONString());
@@ -157,7 +135,6 @@ public  class JSonTraduttore  {
 		}
 
 		return tracciati;
-
 
 	}
 
@@ -186,6 +163,8 @@ public  class JSonTraduttore  {
 		JSONObject obj1 = (JSONObject)obj;
 		
 		JSONObject tracciatiobj = (JSONObject)obj1.get("TracciatoRapporto");
+		
+		//JSONObject movimentiobj = (JSONObject)obj1.get("movimenti");
 		
 		return tracciatiobj;
 
